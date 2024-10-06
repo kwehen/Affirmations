@@ -1,0 +1,16 @@
+services:
+  backend:
+    container_name: backend
+    image: localhost/backend:0.1
+    environment:
+      OPENAI_API_KEY: $OPENAI_API_KEY
+    restart: unless-stopped 
+    ports:
+      - 8080:8080
+  frontend:
+    container_name: frontend
+    image: localhost/frontend:0.1
+    restart: unless-stopped 
+    ports:
+      - 80:80
+  
