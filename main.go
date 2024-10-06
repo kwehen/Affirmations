@@ -48,11 +48,11 @@ func chat(c *gin.Context) {
 
 	req := openai.ChatCompletionRequest{
 		Model:     openai.GPT4o,
-		MaxTokens: 25,
+		MaxTokens: 35,
 		Messages: []openai.ChatCompletionMessage{
 			{
 				Role:    openai.ChatMessageRoleUser,
-				Content: "Write a unqiue one sentance daily affirmation",
+				Content: "Write a unqiue one sentance daily affirmation. Again, the must only be one sentance. Do not use the word embrace. The affirmation must be different every time. Be creative and original.",
 			},
 		},
 
