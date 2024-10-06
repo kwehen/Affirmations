@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./affirmationicon.jpg">
     <title>Affirmation Generator</title>
     <style>
         body {
@@ -93,7 +94,7 @@
                 });
 
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error(response.statusText);
                 }
 
                 const data = await response.json();
