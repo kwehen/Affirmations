@@ -39,11 +39,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       with:
-        sparse-checkout: |
-          ./static/Dockerfile
-          ./static/index.html
-          ./static/nginx.conf
-          ./static/addirmationicon.jpg         
+        sparse-checkout: static
+        sparse-checkout-cone-mode: false     
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
     - name: Set up Docker Buildx
