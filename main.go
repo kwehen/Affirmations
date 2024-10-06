@@ -26,8 +26,8 @@ func main() {
 	router.Use(cors.Default())
 	// This makes it so each ip can only make 5 requests per second
 	store := ratelimit.InMemoryStore(&ratelimit.InMemoryOptions{
-		Rate:  time.Minute,
-		Limit: 5,
+		Rate:  time.Hour,
+		Limit: 10,
 	})
 	mw := ratelimit.RateLimiter(store, &ratelimit.Options{
 		ErrorHandler: errorHandler,
