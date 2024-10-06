@@ -41,10 +41,9 @@ jobs:
       with:
         sparse-checkout: static
         sparse-checkout-cone-mode: false
-    - name: Move mobile app files to root
+    - name: Move static files to root
       run: |
         ls -lah
-        shopt -s dotglob
         mv static/* .
         rm -rf static
         ls -lah 
