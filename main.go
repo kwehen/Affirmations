@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"log"
+	"math/rand"
 	"net/http"
 	"os"
 	"time"
@@ -24,7 +25,7 @@ func errorHandler(c *gin.Context, info ratelimit.Info) {
 func main() {
 	router := gin.Default()
 	router.Use(cors.Default())
-	// This makes it so each ip can only make 5 requests per second
+	// This makes it so each ip can only make 5 requests per hour
 	store := ratelimit.InMemoryStore(&ratelimit.InMemoryOptions{
 		Rate:  time.Hour,
 		Limit: 10,
@@ -42,6 +43,12 @@ func main() {
 }
 
 func chat(c *gin.Context) {
+	affirmations := []string{
+		"Write a unqiue one sentance daily affirmation. Again, the must only be one sentance. Do not use the word embrace. The affirmation must be different every time. Be creative and original.",
+		"Write an affirmation that stresses refocus, hard work, hopefulness, and positivity. Make sure this is only one sentance. Be creative and original.",
+		"Write a one sentance unique daily affirmation that focuses on gratitude, a positive outlook, and more. This must only be one sentance. Be creative and original.",
+	}
+
 	api_key := os.Getenv("OPENAI_API_KEY")
 	w := openai.NewClient(api_key)
 	ctx := context.Background()
@@ -52,7 +59,7 @@ func chat(c *gin.Context) {
 		Messages: []openai.ChatCompletionMessage{
 			{
 				Role:    openai.ChatMessageRoleUser,
-				Content: "Write a unqiue one sentance daily affirmation. Again, the must only be one sentance. Do not use the word embrace. The affirmation must be different every time. Be creative and original.",
+				Content: affirmations[rand.Intn(len(affirmations))],
 			},
 		},
 
