@@ -47,6 +47,7 @@ func chat(c *gin.Context) {
 		"Write a unqiue one sentance daily affirmation. Again, the must only be one sentance. Do not use the word embrace. The affirmation must be different every time. Be creative and original.",
 		"Write an affirmation that stresses refocus, hard work, hopefulness, and positivity. Make sure this is only one sentance. Be creative and original.",
 		"Write a one sentance unique daily affirmation that focuses on gratitude, a positive outlook, and more. This must only be one sentance. Be creative and original.",
+		"Write a one sentance affirmation that affirms the user of their self-worth and value, adds a little bit on open-mindedness, and gives a positive jolt for the rest of the day. This must only be one sentance. Be creative and original.",
 	}
 
 	api_key := os.Getenv("OPENAI_API_KEY")
