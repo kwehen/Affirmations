@@ -49,6 +49,7 @@ func chat(c *gin.Context) {
 		"Write a one sentance affirmation reassuring that today's challenges are worth it because of tomorrow's success. Closed doors lead to open doors elsewhere. There is light at the end of the tunnel. Make the affirmation unique. Be creative and original. It must be one sentance.",
 		"Write a one sentance affirmation that brightens the mood/soul, reassuring the reader that there are things to be thankful for even despite the present sadness. Make it cheerful. This must only be one sentance. Be creative and original",
 		"Write a one sentance affirmation that is cheerful, humorous, and puts a smile on the readers face. The intent is to get the reader that is in a bad mood or slump to smile and cheer up slightly. This must only be one sentance. Be creative and original.",
+		"Write a silly one sentance affirmation that tells a joke, has a sense of humor, and also brighens of the readers day. This must be one sentance. Be creative and original.",
 		"Write a one sentance unique daily affirmation that focuses on gratitude, a positive outlook, and more. This must only be one sentance. Be creative and original.",
 		"Write a one sentance affirmation that affirms the user of their self-worth and value, adds a little bit on open-mindedness, and gives a positive jolt for the rest of the day. This must only be one sentance. Be creative and original.",
 	}
