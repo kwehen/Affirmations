@@ -4,108 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="affirmationicon.jpg">
+    <link rel="stylesheet" href="styles.css">
     <title>Affirmation Generator</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: #e8f0f2; /* Light background color */
-            font-family: 'Arial', sans-serif;
-        }
-
-        button {
-            background-color: #6200ea; /* Purple button */
-            color: white;
-            border: none;
-            border-radius: 25px;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        button:hover {
-            background-color: #3700b3; /* Darker purple on hover */
-            transform: translateY(-2px);
-        }
-
-        .spinner {
-            display: none;
-            border: 4px solid #f0f0f0;
-            border-top: 4px solid #6200ea;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 10px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .response {
-            margin-top: 20px;
-            font-size: 1.5em;
-            text-align: center;
-            color: #333;
-            padding: 20px;
-            background-color: #fff; /* White background for response */
-            border-radius: 10px; /* Rounded corners */
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
-            max-width: 90%; /* Max width */
-            transition: transform 0.3s ease;
-        }
-
-        .response:hover {
-            transform: scale(1.02); /* Slight zoom effect on hover */
-        }
-    </style>
 </head>
 <body>
-    <button onclick="myFunction()">
+    <button onclick="generateAffirmation()">
         <span>Need an affirmation?</span>
     </button>
     <div class="spinner" id="spinner"></div>
     <div class="response" id="response"></div>
 
-    <script>
-        async function myFunction() {
-            const spinner = document.getElementById('spinner');
-            const responseDiv = document.getElementById('response');
-
-            // Show spinner
-            spinner.style.display = 'block';
-            responseDiv.innerHTML = ''; // Clear previous response
-
-            try {
-                const response = await fetch('/api/chat', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'text/plain'
-                    },
-                    body: JSON.stringify({})
-                });
-
-                if (!response.ok) {
-                    throw new Error(response.statusText);
-                }
-
-                const data = await response.json();
-                responseDiv.innerHTML = data.message || 'No message received';
-            } catch (error) {
-                responseDiv.innerHTML = 'Error: ' + error.message;
-            } finally {
-                // Hide spinner
-                spinner.style.display = 'none';
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

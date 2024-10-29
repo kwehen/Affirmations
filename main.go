@@ -25,17 +25,16 @@ func errorHandler(c *gin.Context, info ratelimit.Info) {
 func main() {
 	router := gin.Default()
 	router.Use(cors.Default())
-	// This makes it so each ip can only make 5 requests per hour
+	// Each IP can only make 5 requests per hour.
 	store := ratelimit.InMemoryStore(&ratelimit.InMemoryOptions{
 		Rate:  time.Hour,
-		Limit: 10,
+		Limit: 5,
 	})
 	mw := ratelimit.RateLimiter(store, &ratelimit.Options{
 		ErrorHandler: errorHandler,
 		KeyFunc:      keyFunc,
 	})
 	router.POST("/chat", mw, chat)
-	// router.OPTIONS("/chat", mw, chat)
 	err := router.Run("0.0.0.0:8080")
 	if err != nil {
 		log.Println("Error starting webserver", err)
