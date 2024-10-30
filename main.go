@@ -65,8 +65,6 @@ func chat(c *gin.Context) {
 				Content: affirmations[rand.Intn(len(affirmations))],
 			},
 		},
-
-		// Prompt:    "Lorem ipsum
 	}
 	resp, err := w.CreateChatCompletion(ctx, req)
 	if err != nil {
