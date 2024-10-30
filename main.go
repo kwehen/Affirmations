@@ -43,13 +43,13 @@ func main() {
 
 func chat(c *gin.Context) {
 	affirmations := []string{
-		AFFIRMATION_QUERY,
-		AFFIRMATION_QUERY_1,
-		AFFIRMATION_QUERY_2,
-		AFFIRMATION_QUERY_3,
-		AFFIRMATION_QUERY_4,
-		AFFIRMATION_QUERY_5,
-		AFFIRMATION_QUERY_6,
+		"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Natoque proin id commodo potenti aliquet etiam phasellus duis. Etiam eu viverra ante quis faucibus volutpat urna commodo.",
+		"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Habitant hac gravida gravida sed suscipit ligula interdum mi. Lectus cras quis adipiscing taciti risus mauris condimentum sagittis. Consequat vitae urna feugiat morbi conubia duis mattis porta. Ligula nullam justo blandit dui turpis conubia praesent quis.",
+		"Consequat quisque mauris platea taciti blandit sociosqu sociosqu magna purus. Fusce inceptos nam id nulla congue vivamus fermentum turpis nullam. Luctus facilisi metus non vehicula sit ipsum donec orci quisque. Velit consequat risus suspendisse id curabitur cras congue ac magnis.",
+		"Gravida adipiscing consectetur ad per dictumst est montes vulputate suscipit eget blandit aliquam urna. Tincidunt ligula urna mattis venenatis conubia feugiat suspendisse sem eget urna per vehicula mollis. Dignissim congue faucibus cum vestibulum malesuada rutrum lectus risus suspendisse lorem sollicitudin non laoreet.",
+		"Potenti neque vehicula integer pellentesque curabitur praesent potenti pellentesque bibendum hac torquent nisi taciti. In mattis nunc ultricies vestibulum nisl sagittis amet risus sit rhoncus class commodo ornare. Cubilia maecenas et donec odio rhoncus cubilia fringilla a tempus mus turpis arcu penatibus. Laoreet dapibus maecenas primis senectus donec natoque consectetur litora at habitasse ridiculus sagittis cras.",
+		"Feugiat nullam potenti netus pellentesque id consequat phasellus hendrerit. Cras class pretium lorem vehicula purus risus sociosqu nostra. Dolor iaculis hac natoque in condimentum scelerisque rhoncus erat. Platea ultricies convallis platea porttitor scelerisque egestas euismod orci.",
+		"Sed litora vestibulum dolor inceptos non nam magna porttitor integer neque per etiam dictumst hendrerit. Nulla dictumst felis vitae viverra aptent sociis etiam pretium torquent massa montes odio porta leo. Sodales ultricies curae feugiat nulla metus cum ornare cubilia duis cum litora convallis porttitor sit. Euismod inceptos luctus ad nam rutrum ornare magna nam donec lectus odio lobortis magna sociis.",
 	}
 
 	api_key := os.Getenv("OPENAI_API_KEY")
