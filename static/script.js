@@ -4,7 +4,7 @@ async function generateAffirmation() {
 
     // Show spinner
     spinner.style.display = 'block';
-    responseDiv.innerHTML = ''; // Clear previous response
+    responseDiv.innerHTML = ''; // 
 
     try {
         const response = await fetch('/api/chat', {
