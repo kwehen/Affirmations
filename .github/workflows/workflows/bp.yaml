@@ -32,7 +32,7 @@ jobs:
         tags: registry.home.${{ secrets.INTERNAL_DOMAIN }}/affirmations/backend:latest
 
   frontend:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     container:
       image: catthehacker/ubuntu:act-latest
     steps:
