@@ -1,41 +1,12 @@
 name: ci
+
 on:
   push:
+
 jobs:
   backend:
     runs-on: self-hosted
     steps:
-<<<<<<< HEAD
-      - uses: plengauer/opentelemetry-github/actions/instrument/job@v5.21.0
-        env:
-          OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
-          OTEL_EXPORTER_OTLP_HEADERS: Authorization=Api-Token ${{ secrets.DYNATRACE_API_KEY }}
-        with:
-          secrets_to_redact: '["${{ github.token }}","${{ secrets.INTERNAL_DOMAIN }}","${{ secrets.REGISTRY_PASSWORD }}","${{ secrets.REGISTRY_USERNAME }}"]'
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          sparse-checkout: .
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      - name: Login to DockerHub
-        uses: docker/login-action@v3
-        with:
-          registry: registry.home.${{ secrets.INTERNAL_DOMAIN }}
-          username: ${{ secrets.REGISTRY_USERNAME }}
-          password: ${{ secrets.REGISTRY_PASSWORD }}
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          platforms: linux/amd64
-          push: true
-          tags: registry.home.${{ secrets.INTERNAL_DOMAIN }}/affirmations/backend:latest
-    permissions:
-      actions: read
-=======
     - name: Checkout
       uses: actions/checkout@v4
       # with:
@@ -58,39 +29,36 @@ jobs:
         push: true
         tags: registry.home.${{ secrets.INTERNAL_DOMAIN }}/affirmations/backend:latest
 
->>>>>>> 0cae5c9 (fix: pipeline sucks)
   frontend:
     runs-on: self-hosted
     steps:
-      - uses: plengauer/opentelemetry-github/actions/instrument/job@v5.21.0
-        env:
-          OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
-          OTEL_EXPORTER_OTLP_HEADERS: Authorization=Api-Token ${{ secrets.DYNATRACE_API_KEY }}
-        with:
-          secrets_to_redact: '["${{ github.token }}","${{ secrets.INTERNAL_DOMAIN }}","${{ secrets.REGISTRY_PASSWORD }}","${{ secrets.REGISTRY_USERNAME }}"]'
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          sparse-checkout: static
-          sparse-checkout-cone-mode: false
-      - name: Move static files to root
-        run: "ls -lah\nmv static/* .\nrm -rf static\nls -lah \n"
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      - name: Login to DockerHub
-        uses: docker/login-action@v3
-        with:
-          registry: registry.home.${{ secrets.INTERNAL_DOMAIN }}
-          username: ${{ secrets.REGISTRY_USERNAME }}
-          password: ${{ secrets.REGISTRY_PASSWORD }}
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          platforms: linux/amd64
-          push: true
-          tags: registry.home.${{ secrets.INTERNAL_DOMAIN }}/affirmations/frontend:latest
-    permissions:
-      actions: read
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        sparse-checkout: static
+        sparse-checkout-cone-mode: false
+    - name: Move static files to root
+      run: |
+        ls -lah
+        mv static/* .
+        rm -rf static
+        ls -lah 
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+    - name: Login to DockerHub
+      uses: docker/login-action@v3
+      with:
+        registry: registry.home.${{ secrets.INTERNAL_DOMAIN }}
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    - name: Build and push
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        platforms: linux/amd64
+        push: true
+        tags: registry.home.${{ secrets.INTERNAL_DOMAIN }}/affirmations/frontend:latest
+
+      
