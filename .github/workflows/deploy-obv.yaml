@@ -9,7 +9,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: cold-email-runners
+    runs-on: ubuntu-latest
     
     steps:
       - uses: plengauer/Thoth/actions/instrument/deploy@v5.21.0
